@@ -3,41 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prajituri Delicioase</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Florian Sweet Atelier</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+        .gallery img { width: 100%; height: auto; border-radius: 5px; animation: fadeIn 1s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Prajituri Delicioase</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="about">
-            <h2>About Us</h2>
-            <p>At Prajituri Delicioase, we offer a variety of delicious pastries and baked goods made with love.</p>
-        </section>
-        <section id="menu">
-            <h2>Our Menu</h2>
-            <ul>
-                <li>Chocolate Cake</li>
-                <li>Fruit Tart</li>
-                <li>Croissants</li>
-                <li>Macarons</li>
-            </ul>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>Email: contact@prajituridelicioase.com</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 Prajituri Delicioase</p>
-    </footer>
+    <header><h1>Welcome to Florian Sweet Atelier</h1></header>
+    <section>
+        <h2>Animated Content</h2>
+        <p>Discover our collection of unique sweet creations. Enjoy the visual treat!</p>
+        <div class="gallery">
+            <img src="image1.jpg" alt="Sweet Creation 1">
+            <img src="image2.jpg" alt="Sweet Creation 2">
+            <img src="image3.jpg" alt="Sweet Creation 3">
+        </div>
+    </section>
+    <footer><p>&copy; 2026 Florian Sweet Atelier</p></footer>
 </body>
 </html>
