@@ -1,112 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Florian Sweet Atelier</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 20px; 
-            background-color: #f5f5f5;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        header h1 {
-            color: #d4756e;
-            font-size: 2.5em;
-        }
-        .product-gallery { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-        .product-card img { 
-            width: 100%; 
-            height: 250px; 
-            object-fit: cover;
-            border-radius: 10px 10px 0 0;
-        }
-        .product-card h3 {
-            color: #333;
-            margin: 15px;
-            font-size: 1.3em;
-        }
-        .product-card p {
-            margin: 8px 15px;
-            color: #666;
-            font-size: 1em;
-        }
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            color: #999;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Florian Sweet Atelier</title>
+  
+  <style>
+    :root {
+      --pink: #e87a9a;
+      --rose: #d4756e;
+      --cream: #fff5f0;
+      --shadow: 0 12px 30px rgba(212, 117, 110, 0.22);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #fff8f5 0%, #ffe9e3 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Fundal animat subtil */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(212,117,110,0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 80% 70%, rgba(232,122,154,0.07) 0%, transparent 50%);
+      pointer-events: none;
+      animation: breathe 18s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes breathe {
+      0%   { transform: scale(1.02) translate(0, 0); opacity: 0.7; }
+      100% { transform: scale(1.08) translate(4%, 3%); opacity: 0.85; }
+    }
+
+    header {
+      text-align: center;
+      margin: 0 auto 60px;
+      max-width: 800px;
+    }
+
+    h1 {
+      color: var(--rose);
+      font-size: clamp(2.6rem, 7vw, 4.8rem);
+      margin-bottom: 12px;
+      text-shadow: 0 3px 10px rgba(212,117,110,0.3);
+      animation: floatTitle 6s ease-in-out infinite;
+    }
+
+    @keyframes floatTitle {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-12px); }
+    }
+
+    header p {
+      font-size: 1.3rem;
+      color: #666;
+      opacity: 0;
+      animation: fadeInUp 1.2s 0.4s forwards;
+    }
+
+    .product-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+
+    .product-card {
+      position: relative;
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      opacity: 0;
+      transform: translateY(60px) scale(0.92);
+      animation: cardEntrance 0.9s forwards;
+    }
+
+    /* Stagger animation pentru fiecare card */
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.2s; }
+    .product-card:nth-child(3) { animation-delay: 0.3s; }
+    .product-card:nth-child(4) { animation-delay: 0.4s; }
+    .product-card:nth-child(5) { animation-delay: 0.5s; }
+    .product-card:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes cardEntrance {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .product-card:hover {
+      transform: translateY(-18px) scale(1.04);
+      box-shadow: 0 24px 50px rgba(212,117,110,0.35);
+    }
+
+    .product-card:active {
+      transform: translateY(-8px) scale(0.98);
+      transition: all 0.15s ease;
+    }
+
+    .img-wrapper {
+      position: relative;
+      height: 260px;
+      overflow: hidden;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(1.05);
+    }
+
+    .product-card:hover img {
+      transform: scale(1.18) rotate(3deg);
+    }
+
+    /* Overlay gradient + buton fals */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(212,117,110,0.75) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 30px;
+    }
+
+    .product-card:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay span {
+      background: white;
+      color: var(--rose);
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.5s 0.1s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    .product-card:hover .overlay span {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .info {
+      padding: 24px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      background: white;
+    }
+
+    .product-card h3 {
+      color: var(--rose);
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      transition: all 0.4s ease;
+    }
+
+    .product-card:hover h3 {
+      color: #c15c58;
+      transform: scale(1.08);
+    }
+
+    .product-card p {
+      margin: 10px 0;
+      font-size: 1.15rem;
+      color: #555;
+    }
+
+    .product-card p strong {
+      color: #e65b8c;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      padding: 30px 0;
+      color: #888;
+      border-top: 1px solid #eee;
+      font-size: 0.95rem;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .product-gallery { gap: 24px; }
+      .product-card { margin: 0 10px; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Florian Sweet Atelier</h1>
-        <p>Discover our collection of unique sweet creations</p>
-    </header>
-    <section>
-        <div class="product-gallery">
-            <div class="product-card">
-                <img src="https://www.loveandlemons.com/easy-cookie-recipes/" alt="Easy Cookie Recipes">
-                <h3>Easy Cookie Recipes</h3>
-                <p><strong>Price:</strong> $8.99</p>
-                <p><strong>Weight:</strong> 250g</p>
-            </div>
-            <div class="product-card">
-                <img src="https://pofta-buna.com/briose-de-post-reteta-pas-cu-pas" alt="Briose de Post">
-                <h3>Briose de Post</h3>
-                <p><strong>Price:</strong> $6.50</p>
-                <p><strong>Weight:</strong> 180g</p>
-            </div>
-            <div class="product-card">
-                <img src="https://www.iheartnaptime.net/cake-pops/" alt="Cake Pops">
-                <h3>Cake Pops</h3>
-                <p><strong>Price:</strong> $12.99</p>
-                <p><strong>Weight:</strong> 200g</p>
-            </div>
-            <div class="product-card">
-                <img src="https://desertdecasa.ro/chec-marmorat/" alt="Chec Marmorat">
-                <h3>Chec Marmorat</h3>
-                <p><strong>Price:</strong> $9.99</p>
-                <p><strong>Weight:</strong> 350g</p>
-            </div>
-            <div class="product-card">
-                <img src="https://www.tripadvisor.co.za/LocationPhotoDirectLink-g298474-d8439469-i326989012-Chocodor-Cluj_Napoca_Cluj_County_Northwest_Romania_Transylvania.html" alt="Chocodor Speciality">
-                <h3>Chocodor Speciality</h3>
-                <p><strong>Price:</strong> $14.99</p>
-                <p><strong>Weight:</strong> 300g</p>
-            </div>
-            <div class="product-card">
-                <img src="https://www.freshful.ro/retete/r/reteta-prajitura-cu-fistic-paste-pentru-kataif-si-mousse-de-ciocolata-alba" alt="Prajitura cu Fistic">
-                <h3>Prajitura cu Fistic</h3>
-                <p><strong>Price:</strong> $16.99</p>
-                <p><strong>Weight:</strong> 400g</p>
-            </div>
-        </div>
-    </section>
-    <footer><p>&copy; 2026 Florian Sweet Atelier. All rights reserved.</p></footer>
+
+  <header>
+    <h1>Florian Sweet Atelier</h1>
+    <p>Descoperă creațiile noastre dulci unicat</p>
+  </header>
+
+  <section class="product-gallery">
+
+    <div class="product-card">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1558312657-b2dead03d494?w=800" alt="Easy Cookie Recipes">
+        <div class="overlay"><span>Vezi detalii</span></div>
+      </div>
+      <div class="info">
+        <h3>Easy Cookie Recipes</h3>
+        <p><strong>Preț:</strong> 8.99 RON</p>
+        <p><strong>Gramaj:</strong> 250g</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=800" alt="Briose de Post">
+        <div class="overlay"><span>Vezi detalii</span></div>
+      </div>
+      <div class="info">
+        <h3>Briose de Post</h3>
+        <p><strong>Preț:</strong> 6.50 RON</p>
+        <p><strong>Gramaj:</strong> 180g</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1612201142855-7873bc1661b4?w=800" alt="Cake Pops">
+        <div class="overlay"><span>Vezi detalii</span></div>
+      </div>
+      <div class="info">
+        <h3>Cake Pops</h3>
+        <p><strong>Preț:</strong> 12.99 RON</p>
+        <p><strong>Gramaj:</strong> 200g</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1622620725282-6b3e6f22aeeb?w=800" alt="Chec Marmorat">
+        <div class="overlay"><span>Vezi detalii</span></div>
+      </div>
+      <div class="info">
+        <h3>Chec Marmorat</h3>
+        <p><strong>Preț:</strong> 9.99 RON</p>
+        <p><strong>Gramaj:</strong> 350g</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?w=800" alt="Chocodor Speciality">
+        <div class="overlay"><span>Vezi detalii</span></div>
+      </div>
+      <div class="info">
+        <h3>Chocodor Speciality</h3>
+        <p><strong>Preț:</strong> 14.99 RON</p>
+        <p><strong>Gramaj:</strong> 300g</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="img-wrapper">
+        <img src="https://images.unsplash.com/photo-1618509550988-63246d137e8e?w=800" alt="Prajitura cu Fistic">
+        <div class="overlay"><span>Vezi detalii</span></div>
+      </div>
+      <div class="info">
+        <h3>Prajitura cu Fistic</h3>
+        <p><strong>Preț:</strong> 16.99 RON</p>
+        <p><strong>Gramaj:</strong> 400g</p>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2026 Florian Sweet Atelier. Toate drepturile rezervate.</p>
+  </footer>
+
 </body>
 </html>
