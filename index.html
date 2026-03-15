@@ -1,38 +1,112 @@
-<div class="product-gallery">
-    <div class="product">
-        <img src="https://example.com/image1.jpg" alt="Sweet Product 1">
-        <h2>Sweet Product 1</h2>
-        <p>Price: $10.00</p>
-        <p>Weight: 200g</p>
-    </div>
-    <div class="product">
-        <img src="https://example.com/image2.jpg" alt="Sweet Product 2">
-        <h2>Sweet Product 2</h2>
-        <p>Price: $12.00</p>
-        <p>Weight: 250g</p>
-    </div>
-    <div class="product">
-        <img src="https://example.com/image3.jpg" alt="Sweet Product 3">
-        <h2>Sweet Product 3</h2>
-        <p>Price: $15.00</p>
-        <p>Weight: 300g</p>
-    </div>
-    <div class="product">
-        <img src="https://example.com/image4.jpg" alt="Sweet Product 4">
-        <h2>Sweet Product 4</h2>
-        <p>Price: $8.00</p>
-        <p>Weight: 150g</p>
-    </div>
-    <div class="product">
-        <img src="https://example.com/image5.jpg" alt="Sweet Product 5">
-        <h2>Sweet Product 5</h2>
-        <p>Price: $20.00</p>
-        <p>Weight: 400g</p>
-    </div>
-    <div class="product">
-        <img src="https://example.com/image6.jpg" alt="Sweet Product 6">
-        <h2>Sweet Product 6</h2>
-        <p>Price: $18.00</p>
-        <p>Weight: 350g</p>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florian Sweet Atelier</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background-color: #f5f5f5;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            color: #d4756e;
+            font-size: 2.5em;
+        }
+        .product-gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .product-card img { 
+            width: 100%; 
+            height: 250px; 
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+        .product-card h3 {
+            color: #333;
+            margin: 15px;
+            font-size: 1.3em;
+        }
+        .product-card p {
+            margin: 8px 15px;
+            color: #666;
+            font-size: 1em;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #999;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Florian Sweet Atelier</h1>
+        <p>Discover our collection of unique sweet creations</p>
+    </header>
+    <section>
+        <div class="product-gallery">
+            <div class="product-card">
+                <img src="https://www.loveandlemons.com/easy-cookie-recipes/" alt="Easy Cookie Recipes">
+                <h3>Easy Cookie Recipes</h3>
+                <p><strong>Price:</strong> $8.99</p>
+                <p><strong>Weight:</strong> 250g</p>
+            </div>
+            <div class="product-card">
+                <img src="https://pofta-buna.com/briose-de-post-reteta-pas-cu-pas" alt="Briose de Post">
+                <h3>Briose de Post</h3>
+                <p><strong>Price:</strong> $6.50</p>
+                <p><strong>Weight:</strong> 180g</p>
+            </div>
+            <div class="product-card">
+                <img src="https://www.iheartnaptime.net/cake-pops/" alt="Cake Pops">
+                <h3>Cake Pops</h3>
+                <p><strong>Price:</strong> $12.99</p>
+                <p><strong>Weight:</strong> 200g</p>
+            </div>
+            <div class="product-card">
+                <img src="https://desertdecasa.ro/chec-marmorat/" alt="Chec Marmorat">
+                <h3>Chec Marmorat</h3>
+                <p><strong>Price:</strong> $9.99</p>
+                <p><strong>Weight:</strong> 350g</p>
+            </div>
+            <div class="product-card">
+                <img src="https://www.tripadvisor.co.za/LocationPhotoDirectLink-g298474-d8439469-i326989012-Chocodor-Cluj_Napoca_Cluj_County_Northwest_Romania_Transylvania.html" alt="Chocodor Speciality">
+                <h3>Chocodor Speciality</h3>
+                <p><strong>Price:</strong> $14.99</p>
+                <p><strong>Weight:</strong> 300g</p>
+            </div>
+            <div class="product-card">
+                <img src="https://www.freshful.ro/retete/r/reteta-prajitura-cu-fistic-paste-pentru-kataif-si-mousse-de-ciocolata-alba" alt="Prajitura cu Fistic">
+                <h3>Prajitura cu Fistic</h3>
+                <p><strong>Price:</strong> $16.99</p>
+                <p><strong>Weight:</strong> 400g</p>
+            </div>
+        </div>
+    </section>
+    <footer><p>&copy; 2026 Florian Sweet Atelier. All rights reserved.</p></footer>
+</body>
+</html>
